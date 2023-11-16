@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily News</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        overflow: hidden; /* Prevents scrollbars */
+        background-color: #13182b;
+      }
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+      .image-side {
+        flex: 1;
+        background-color: #e0e0e0;
+        background-image: url("../source/dailyNews_p4.jpg"); /* Replace with your image path */
+        background-size: cover;
+        background-position: center;
+      }
+      .button-side {
+        flex: 0.618;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .circle-button {
+        width: 400px;
+        height: 100px;
+        background-color: #0056b3;
+        padding: 10px 0;
+        border: none;
+        border-radius: 5px; /* 轻微圆角 */
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        margin-top: 100px;
+        margin-left: 20px;
+        text-decoration: none;
+      }
+      .message-box {
+        width: 200px;
+        height: 200px;
+        background-color: #ffffff; /* Change the color to white */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+        padding: 20px; /* Adjust padding as needed */
+        text-align: left; /* Center align the text */
+        display: block;
+      }
+
+      .message-box p {
+        margin: 10px 0; /* Adjust spacing between paragraphs */
+      }
+
+      .button-container {
+        display: flex; /* 使用Flexbox来排列按钮 */
+        justify-content: center; /* 水平居中 */
+        gap: 40px; /* 按钮之间的间隔 */
+        margin-top: 20px; /* 与消息框的距离 */
+        position: absolute;
+        top: 66%;
+        left: 73.5%;
+      }
+
+      .header {
+        padding: 2%;
+        position: absolute;
+        top: 2%;
+        left: 0.5%;
+      }
+
+      .header2 {
+        padding: 2%;
+        position: absolute;
+        top: 30%;
+        left: 67.5%;
+      }
+      .header-sign {
+        padding: 2%;
+        position: absolute;
+        top: 14%;
+        left: 67.5%;
+      }
+      .header h1 {
+        font-size: 4em;
+        color: #fff;
+        margin: 1px;
+        margin-left: 25px;
+      }
+
+      .header2 h1 {
+        font-size: 3.5em;
+        color: #fff;
+        margin: 1px;
+        margin-left: 25px;
+      }
+
+      .header-sign h1 {
+        font-size: 2.5em;
+        color: #fff;
+        margin: 1px;
+        margin-left: 25px;
+      }
+      .header-sign p {
+        font-size: 1.2em;
+        color: #fff;
+        margin: 10px;
+        margin-left: 25px;
+      }
+
+      .sign-button {
+        background-color: #007bff; /* Button background color */
+        border: none; /* 无边框 */
+        border-radius: 20px; /* 圆角边框 */
+        color: white; /* 白色文字 */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 字体大小 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        outline: none; /* 点击时不显示轮廓 */
+        box-shadow: none; /* 不显示阴影 */
+        transition: background-color 0.3s, color 0.3s; /* 过渡动画效果 */
+      }
+
+      .sign-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+      }
+      .cancel-button {
+        background-color: #ffffff; /* 按钮背景颜色为白色 */
+        border: 1px solid #007bff; /* 边框颜色为浅灰色 */
+        border-radius: 20px; /* 圆角边框 */
+        color: #007bff; /* 文字颜色为深灰色 */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 字体大小 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        outline: none; /* 点击时不显示轮廓 */
+        box-shadow: none; /* 不显示阴影 */
+        transition: background-color 0.3s, color 0.3s; /* 过渡动画效果 */
+      }
+
+      .cancel-button:hover {
+        background-color: hsl(0, 0%, 97%); /* 鼠标悬停时的背景颜色 */
+        color: #007bff; /* 鼠标悬停时的文字颜色 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-side">
+        <!-- If you don't have an image yet, you can uncomment below line to display placeholder text -->
+      </div>
+      <div class="header">
+        <h1>Read</h1>
+        <h1>your favorite</h1>
+        <h1>news now</h1>
+      </div>
+      <div class="button-side" id="button-side">
+        <div class="header2">
+          <h1>Get started</h1>
+        </div>
+        <button class="circle-button" id="sendMessageButton">
+          Sign in with DID
+        </button>
+      </div>
+    </div>
+    <script src="news.js"></script>
+  </body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IX-DID</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../source/did_logo.ico"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: column;
+        overflow: scroll;
+      }
+      .section,
+      .section2 {
+        width: 100%;
+        height: 100vh; /* 每个部分的高度为视口的100% */
+        position: relative; /* 确保部分按正常文档流排列 */
+      }
+      .logo {
+        background-color: #000;
+        position: absolute;
+        top: -4%;
+        left: 0%;
+      }
+      .navbar {
+        position: absolute;
+        top: 4.5%;
+        left: 20%;
+        background-color: #000;
+      }
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        line-height: 130%;
+      }
+
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      .navbar-logo img {
+        height: 50px; /* Or your preferred size */
+        width: auto;
+        margin-right: 20px; /* Add some space between logo and navbar links */
+      }
+
+      .navbar2 {
+        position: absolute;
+        top: 5%;
+        left: 90%;
+        background-color: #000;
+      }
+
+      .navbar2 a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        line-height: 130%;
+        border: 1px solid #fff;
+      }
+      .content {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .headline {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .subtext {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+      .explore {
+        text-align: center;
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .explore-button {
+        font-size: 18px;
+        padding: 10px 20px;
+        background-color: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .explore-button:hover {
+        background-color: #1a1a1a;
+        cursor: pointer;
+      }
+      .about-header {
+        padding: 2%;
+      }
+
+      .about-header h1 {
+        font-size: 3em;
+        color: #fff;
+        margin: 1px;
+        margin-left: 25px;
+      }
+
+      .about-header p {
+        color: #aaa;
+        margin: 1px;
+        margin-left: 25px;
+      }
+
+      .about-image {
+        text-align: center;
+        margin: 20px 0;
+        position: absolute;
+        top: 25%;
+        left: 1.5%;
+      }
+      .about-details {
+        display: grid;
+        grid-template-columns: auto auto;
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .about-detail-item {
+        margin: 35px;
+        color: #fff;
+      }
+
+      .about-detail-item h2 {
+        font-size: 2em;
+      }
+
+      .about-detail-item p {
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="logo">
+        <a href="#mywebsite">
+          <img
+            src="../source/logo_full.svg"
+            alt="My Website Logo"
+            height="160"
+          />
+        </a>
+      </div>
+      <div class="navbar">
+        <a href="#api">API</a>
+        <a href="#document">Document</a>
+        <a href="#document">P3Chain</a>
+      </div>
+      <div class="navbar2">
+        <a href="file:///Users/fishbook/MyCode/demo_did/src/news.html"
+          >Try DID</a
+        >
+      </div>
+
+      <div class="content">
+        <div class="headline">
+          Account, Authentication, Authorization, Audit
+        </div>
+        <div class="subtext">
+          The data, rights and responsibilities, and value are tightly coupled
+          with DID itself
+        </div>
+      </div>
+      <div class="explore">
+        <a href="#about-us" class="explore-button">Explore Now</a>
+      </div>
+    </div>
+
+    <!-- 页面2 -->
+    <div class="section2" id="about-us">
+      <div class="about-header">
+        <h1>Enter a new universe</h1>
+        <h1>of connected network.</h1>
+        <p>Communication network and the internet connect</p>
+        <p>using DID, the decentralized identifier.</p>
+      </div>
+      <div class="about-image">
+        <img
+          src="../source/illustration2.svg"
+          alt="Complex Network Illustration"
+          height="600"
+        />
+      </div>
+      <div class="about-details">
+        <div class="about-detail-item">
+          <img src="../source/account.svg" alt="Account Icon" height="100" />
+          <h2>Account</h2>
+          <p>
+            Users upload their network access information to the blockchain via
+            DID.
+          </p>
+        </div>
+        <div class="about-detail-item">
+          <img
+            src="../source/authentication.svg"
+            alt="Authentication Icon"
+            height="100"
+          />
+          <h2>Authentication</h2>
+          <p>
+            The authentication operation is used for users to hand over their
+            DID to service providers for interaction.
+          </p>
+        </div>
+        <div class="about-detail-item">
+          <img
+            src="../source/authorization.svg"
+            alt="Authorization Icon"
+            height="100"
+          />
+          <h2>Authorization</h2>
+          <p>
+            The authorization operation requires users to grant permission to
+            service providers for the data they need.
+          </p>
+        </div>
+        <div class="about-detail-item">
+          <img src="../source/audit.svg" alt="Audit Icon" height="100" />
+          <h2>Audit</h2>
+          <p>
+            The audit operation is used to audit the operational data on the
+            blockchain.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 用于滚动到指定部分的函数
+      function scrollToSection(event, sectionId) {
+        event.preventDefault(); // 阻止默认点击事件
+        document
+          .getElementById(sectionId)
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
