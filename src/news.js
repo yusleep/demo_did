@@ -27,8 +27,8 @@ button.addEventListener("click", function () {
         <p>1</p>
       </div>
       <div class="button-container">
-        <button class="cancel-button">Cancel</button>
-        <button class="sign-button">Sign-In</button>
+        <button class="cancel-button" id="cancelSignButton">Cancel</button>
+        <button class="sign-button" id="signMessageButton">Sign-In</button>
       </div>
    
     `;
@@ -36,18 +36,22 @@ button.addEventListener("click", function () {
       // 更新button-side div的内容
       buttonSideDiv.innerHTML = newContent;
 
-      // // Changing the button to a box
-      // const boxContent = `
-      //       <div class="message-box">
-      //           <div class="message-content">${messageFromServer}</div>
-      //           <button class="signature-button" id="signatureButton">Signature</button>
-      //       </div>
-      //   `;
-
-      // // Update the DOM with the new boxContent
-      // button.parentNode.innerHTML = boxContent;
-
       // Now that the signatureButton exists in the DOM, we can safely add an event listener to it
+
+      document
+        .getElementById("signMessageButton")
+        .addEventListener("click", function () {
+          window.location.href =
+            "file:///Users/fishbook/MyCode/demo_did/src/news_main.html";
+        });
+
+      document
+        .getElementById("cancelSignButton")
+        .addEventListener("click", function () {
+          window.location.href =
+            "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
+        });
+
       document
         .getElementById("signatureButton")
         .addEventListener("click", function () {
