@@ -10,14 +10,90 @@
       }
 
       .header {
-        position: absolute;
-        top: auto;
-        left: 40%;
+        text-align: center;
+        padding: 1px 0;
       }
 
       .header h1 {
         font-size: 4em;
         color: #000;
+      }
+
+      .articlecard-box {
+        display: flex;
+        flex-direction: column; /* Stack the cards vertically */
+        gap: 20px; /* Space between each card */
+        padding: 20px; /* Padding inside the container */
+        padding-left: 10%;
+      }
+
+      /* Individual article card */
+      .wrapper-articleCard {
+        background-color: #fff;
+        width: 100%; /* Full width of the card */
+        max-width: 800px; /* Max width of the card */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
+        border-radius: 10px; /* Rounded corners for the cards */
+        overflow: hidden; /* Clips the content to the border radius */
+        margin-bottom: 20px; /* Space below each card */
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .articleCard {
+        display: flex;
+      }
+
+      .wrapper-articleCard:hover {
+        transform: translateY(-5px); /* Slight raise effect on hover */
+      }
+
+      /* Box for the image */
+      .img_box1 {
+        background-image: url("../source/img_box1.jpeg");
+        width: 400px; /* Full width of the card */
+        height: 200px; /* Fixed height for the images */
+        background-size: cover; /* Cover the entire area of the div */
+        background-position: center; /* Center the image within the div */
+      }
+
+      .img_box2 {
+        background-image: url("../source/img_box2.jpeg");
+        width: 400px; /* Full width of the card */
+        height: 200px; /* Fixed height for the images */
+        background-size: cover; /* Cover the entire area of the div */
+        background-position: center; /* Center the image within the div */
+      }
+
+      .img_box3 {
+        background-image: url("../source/img_box3.jpeg");
+        width: 400px; /* Full width of the card */
+        height: 200px; /* Fixed height for the images */
+        background-size: cover; /* Cover the entire area of the div */
+        background-position: center; /* Center the image within the div */
+      }
+
+      /* Content area of the card */
+      .article-content {
+        padding: 15px; /* Padding inside the content area */
+        background: #fff; /* White background for the text */
+        color: #333; /* Dark grey color for the text */
+      }
+
+      .article-content h3 {
+        margin-top: 0;
+        margin-bottom: 10px; /* Space below the headline */
+        font-size: 1.25em; /* Larger text for headlines */
+      }
+
+      .article-content p {
+        margin: 0;
+        font-size: 1em; /* Regular text size for the content */
+      }
+
+      .article-content-href {
+        text-decoration: none;
+        color: #333;
+        font-size: 1em;
       }
     </style>
   </head>
@@ -25,18 +101,45 @@
     <div class="header">
       <h1>Daily News</h1>
     </div>
+
     <div class="articlecard-box">
       <!-- article-card 1 -->
       <div class="wrapper-articleCard">
         <div class="articleCard">
-          <div class="img_box">
-            <a href="">
-              <img src="" alt="" />
+          <div class="img_box1">
+            <a href=""> </a>
+          </div>
+          <div class="article-content">
+            <a href="" class="article-content-href">
+              社区速递 022｜播客十年、旗舰苹果店以及实用的新玩意
             </a>
           </div>
-          <div class="article-content"></div>
+        </div>
+      </div>
+      <!-- article-card 2 -->
+      <div class="wrapper-articleCard">
+        <div class="articleCard">
+          <div class="img_box2">
+            <a href=""> </a>
+          </div>
+          <div class="article-content">
+            <a href=""></a>
+          </div>
+        </div>
+      </div>
+      <!-- article-card 3 -->
+      <div class="wrapper-articleCard">
+        <div class="articleCard">
+          <div class="img_box3">
+            <a href=""> </a>
+          </div>
+          <div class="article-content">
+            <a href=""></a>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="index-right"></div>
   </body>
 </html>
