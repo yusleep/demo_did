@@ -19,6 +19,11 @@
         color: #000;
       }
 
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
       .articlecard-box {
         display: flex;
         flex-direction: column; /* Stack the cards vertically */
@@ -48,17 +53,18 @@
       }
 
       /* Box for the image */
+
       .img_box1 {
         background-image: url("../source/img_box1.jpeg");
-        width: 400px; /* Full width of the card */
+        width: 55vh; /* Full width of the card */
         height: 200px; /* Fixed height for the images */
         background-size: cover; /* Cover the entire area of the div */
-        background-position: center; /* Center the image within the div */
+        background-position: right; /* Center the image within the div */
       }
 
       .img_box2 {
         background-image: url("../source/img_box2.jpeg");
-        width: 400px; /* Full width of the card */
+        width: 55vh; /* Full width of the card */
         height: 200px; /* Fixed height for the images */
         background-size: cover; /* Cover the entire area of the div */
         background-position: center; /* Center the image within the div */
@@ -66,7 +72,7 @@
 
       .img_box3 {
         background-image: url("../source/img_box3.jpeg");
-        width: 400px; /* Full width of the card */
+        width: 55vh; /* Full width of the card */
         height: 200px; /* Fixed height for the images */
         background-size: cover; /* Cover the entire area of the div */
         background-position: center; /* Center the image within the div */
@@ -74,7 +80,10 @@
 
       /* Content area of the card */
       .article-content {
-        padding: 15px; /* Padding inside the content area */
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 30px 30px 0 30px; /* Padding inside the content area */
         background: #fff; /* White background for the text */
         color: #333; /* Dark grey color for the text */
       }
@@ -93,7 +102,38 @@
       .article-content-href {
         text-decoration: none;
         color: #333;
-        font-size: 1em;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .card_bottom {
+        margin: auto 0 20px;
+        padding-top: 10px;
+        display: flex;
+      }
+
+      .pic_box {
+        position: flex;
+        margin-left: 210px;
+        margin-right: 20px;
+        text-align: center;
+        color: #000;
+      }
+
+      .pic_box_time {
+        color: #8e8787;
+        margin-right: 10px;
+      }
+
+      .index-right {
+        background-color: #fff;
+        position: absolute;
+        width: 400px;
+        height: 670px;
+        top: 24%;
+        left: 70%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
+        border-radius: 10px;
       }
     </style>
   </head>
@@ -101,18 +141,29 @@
     <div class="header">
       <h1>Daily News</h1>
     </div>
-
     <div class="articlecard-box">
       <!-- article-card 1 -->
       <div class="wrapper-articleCard">
         <div class="articleCard">
           <div class="img_box1">
-            <a href=""> </a>
+            <a href="">
+              <!-- <img src="../source/img_box1.jpeg" alt="" class="card_img" /> -->
+            </a>
           </div>
           <div class="article-content">
             <a href="" class="article-content-href">
               社区速递 022｜播客十年、旗舰苹果店以及实用的新玩意
             </a>
+            <div class="card_bottom">
+              <div class="pic_box">
+                <a href="">
+                  <span>机器人</span>
+                </a>
+              </div>
+              <div class="pic_box_time">
+                <span>17小时前</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -123,7 +174,19 @@
             <a href=""> </a>
           </div>
           <div class="article-content">
-            <a href=""></a>
+            <a href="" class="article-content-href">
+              社区速递 022｜播客十年、旗舰苹果店以及实用的新玩意
+            </a>
+            <div class="card_bottom">
+              <div class="pic_box">
+                <a href="">
+                  <span>机器人</span>
+                </a>
+              </div>
+              <div class="pic_box_time">
+                <span>17小时前</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -134,7 +197,19 @@
             <a href=""> </a>
           </div>
           <div class="article-content">
-            <a href=""></a>
+            <a href="" class="article-content-href">
+              社区速递 022｜播客十年、旗舰苹果店以及实用的新玩意
+            </a>
+            <div class="card_bottom">
+              <div class="pic_box">
+                <a href="">
+                  <span>机器人</span>
+                </a>
+              </div>
+              <div class="pic_box_time">
+                <span>17小时前</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
