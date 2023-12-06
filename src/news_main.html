@@ -15,7 +15,7 @@
       }
 
       .topnav h1 {
-        margin-left: 30px;
+        margin-left: 10px;
       }
 
       .header h1 {
@@ -39,11 +39,52 @@
       .content-right {
         display: flex;
         flex-direction: column;
-        /* filter: blur(10px); 模糊化处理*/
+        filter: blur(20px);
       }
 
       .person-item {
         border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .bullet {
+        display: flex;
+        padding: 20px 0;
+      }
+
+      .bullet-content {
+        margin-right: 16px;
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 8px;
+        margin-top: 8px;
+      }
+
+      .bullet-img {
+        width: 63px;
+        height: 44px;
+        border-radius: 4px;
+      }
+
+      #lock-layer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: transparent; /* Or you can use a semi-transparent color to indicate that the content is locked */
+        z-index: 2; /* Make sure this is above the content but below the unlock button */
+      }
+
+      #unlock-button {
+        position: absolute;
+        top: 300px; /* or wherever you'd like it to appear */
+        right: 120px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 5;
       }
 
       .articlecard-box {
@@ -150,12 +191,13 @@
       .index-right {
         background-color: #fff;
         position: absolute;
-        width: 400px;
-        height: 670px;
+        width: 360px;
+        height: 620px;
         top: 24%;
         left: 70%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
         border-radius: 10px;
+        padding: 24px 24px;
       }
     </style>
   </head>
@@ -241,28 +283,82 @@
       <div class="topnav">
         <h1>个性推荐</h1>
       </div>
+      <button id="unlock-button">Unlock Content</button>
       <div class="content-right">
+        <div id="lock-layer"></div>
         <ul>
           <li class="person-item">
-            <a href="">
-              <div>数字魔法一周年：聊聊你对生成式 AI 的印象</div>
-              <img src="" alt="" />
+            <a href="" class="bullet">
+              <div class="bullet-content">
+                数字魔法一周年：聊聊你对生成式 AI 的印象
+              </div>
+              <img
+                src="../source/content-right.jpeg"
+                alt=""
+                class="bullet-img"
+              />
             </a>
           </li>
           <li class="person-item">
-            <a href="">
-              <div>数字魔法一周年：聊聊你对生成式 AI 的印象</div>
-              <img src="" alt="" />
+            <a href="" class="bullet">
+              <div class="bullet-content">
+                数字魔法一周年：聊聊你对生成式 AI 的印象
+              </div>
+              <img
+                src="../source/content-right.jpeg"
+                alt=""
+                class="bullet-img"
+              />
             </a>
           </li>
           <li class="person-item">
-            <a href="">
-              <div>数字魔法一周年：聊聊你对生成式 AI 的印象</div>
-              <img src="" alt="" />
+            <a href="" class="bullet">
+              <div class="bullet-content">
+                数字魔法一周年：聊聊你对生成式 AI 的印象
+              </div>
+              <img
+                src="../source/content-right.jpeg"
+                alt=""
+                class="bullet-img"
+              />
+            </a>
+          </li>
+          <li class="person-item">
+            <a href="" class="bullet">
+              <div class="bullet-content">
+                数字魔法一周年：聊聊你对生成式 AI 的印象
+              </div>
+              <img
+                src="../source/content-right.jpeg"
+                alt=""
+                class="bullet-img"
+              />
+            </a>
+          </li>
+          <li class="person-item">
+            <a href="" class="bullet">
+              <div class="bullet-content">
+                数字魔法一周年：聊聊你对生成式 AI 的印象
+              </div>
+              <img
+                src="../source/content-right.jpeg"
+                alt=""
+                class="bullet-img"
+              />
             </a>
           </li>
         </ul>
       </div>
     </div>
+    <script>
+      document
+        .getElementById("unlock-button")
+        .addEventListener("click", function () {
+          var content = document.querySelector(".content-right");
+          content.style.filter = "none"; // This removes the blur effect
+          document.getElementById("lock-layer").remove(); // This removes the lock layer
+          this.remove();
+        });
+    </script>
   </body>
 </html>
