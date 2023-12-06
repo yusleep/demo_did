@@ -14,6 +14,10 @@
         padding: 1px 0;
       }
 
+      .topnav h1 {
+        margin-left: 30px;
+      }
+
       .header h1 {
         font-size: 4em;
         color: #000;
@@ -22,6 +26,24 @@
       a {
         text-decoration: none;
         color: #000;
+      }
+
+      li,
+      ul {
+        padding: 0;
+        margin: 0 auto;
+        line-height: normal;
+        list-style: none;
+      }
+
+      .content-right {
+        display: flex;
+        flex-direction: column;
+        /* filter: blur(10px); 模糊化处理*/
+      }
+
+      .person-item {
+        border-bottom: 1px solid #e5e5e5;
       }
 
       .articlecard-box {
@@ -215,6 +237,32 @@
       </div>
     </div>
 
-    <div class="index-right"></div>
+    <div class="index-right">
+      <div class="topnav">
+        <h1>个性推荐</h1>
+      </div>
+      <div class="content-right">
+        <ul>
+          <li class="person-item">
+            <a href="">
+              <div>数字魔法一周年：聊聊你对生成式 AI 的印象</div>
+              <img src="" alt="" />
+            </a>
+          </li>
+          <li class="person-item">
+            <a href="">
+              <div>数字魔法一周年：聊聊你对生成式 AI 的印象</div>
+              <img src="" alt="" />
+            </a>
+          </li>
+          <li class="person-item">
+            <a href="">
+              <div>数字魔法一周年：聊聊你对生成式 AI 的印象</div>
+              <img src="" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
