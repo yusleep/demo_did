@@ -3,23 +3,22 @@ const button = document.getElementById("sendMessageButton");
 
 button.addEventListener("click", function () {
   // Using the Fetch API to send a GET request to a server
-  fetch("http://localhost:8080")
+  fetch("http://127.0.0.1:8001/dper/softInvoke")
     .then((response) => response.json())
     .then((data) => {
       // Storing the returned value from the server
       const userDid = data.did;
       console.log(`Here is the user did :${userDid}`);
 
+      const formData = new FormData();
+      formData.append("did", `${userDid}`);
       // 向服务器发送did请求address
       fetch("http://localhost:8080/getaddress", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          // any data you want to send to the server
-          did: `${userDid}`,
-        }),
+        body: formData,
       })
         .then((response) => response.json()) // assuming server responds with json
         .then((data) => {
@@ -64,15 +63,14 @@ button.addEventListener("click", function () {
         .getElementById("signMessageButton")
         .addEventListener("click", function () {
           // 向用户请求签名
+          const formData = new FormData();
+          formData.append("message", `${randomNum}`);
           fetch("http://localhost:8080/getUserSign", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              // any data you want to send to the server
-              message: `${randomNum}`,
-            }),
+            body: formData,
           })
             .then((response) => response.json()) // assuming server responds with json
             .then((data) => {
@@ -87,18 +85,23 @@ button.addEventListener("click", function () {
               );
             });
 
+          const formDataToServer = new FormData();
+          formDataToServer.append("message", `${randomNum}`);
+          formDataToServer.append(
+            "address",
+            `${localStorage.getItem("userAddress")}`
+          );
+          formDataToServer.append(
+            "signature",
+            `${localStorage.getItem("userSignature")}`
+          );
           // 向服务器发送验证请求
           fetch("http://localhost:8080/serverVerify", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              // any data you want to send to the server
-              message: `${randomNum}`,
-              address: `${localStorage.getItem("userAddress")}`,
-              signature: `${localStorage.getItem("userSignature")}`,
-            }),
+            body: formDataToServer,
           })
             .then((response) => response.json()) // assuming server responds with json
             .then((data) => {
@@ -140,15 +143,14 @@ const buttonVerify = document.getElementById("verifyMessageButton");
 buttonVerify.addEventListener("click", function () {
   const randomNum = Math.floor(Math.random() * 100); //随机生成0-100的整数（不包含100）
   // 向服务器请求签名
+  const formData = new FormData();
+  formData.append("message", `${randomNum}`);
   fetch("http://localhost:8080/getUserSign", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      // any data you want to send to the server
-      message: `${randomNum}`,
-    }),
+    body: formData,
   })
     .then((response) => response.json()) // assuming server responds with json
     .then((data) => {
@@ -192,18 +194,23 @@ buttonVerify.addEventListener("click", function () {
   document
     .getElementById("signMessageButton")
     .addEventListener("click", function () {
+      const formDataToUser = new FormData();
+      formDataToUser.append("message", `${randomNum}`);
+      formDataToUser.append(
+        "address",
+        `${localStorage.getItem("serverAddress")}`
+      );
+      formDataToUser.append(
+        "signature",
+        `${localStorage.getItem("serverSignature")}`
+      );
       // 向用户发送验证请求
       fetch("http://localhost:8080/serverVerify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          // any data you want to send to the server
-          message: `${randomNum}`,
-          address: `${localStorage.getItem("serverAddress")}`,
-          signature: `${localStorage.getItem("serverSignature")}`,
-        }),
+        body: formDataToUser,
       })
         .then((response) => response.json()) // assuming server responds with json
         .then((data) => {
