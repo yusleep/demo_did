@@ -13,8 +13,9 @@ app.get("/", (req, res) => {
 
 app.post("/getaddress", (req, res) => {
   // You can access the JSON sent by the client via req.body
+  console.log("Here is the user did: ");
   console.log(req.body);
-
+  console.log("---------------------------------------");
   // Respond with a JSON object
   res.json({
     address: "abcdefg",
@@ -23,8 +24,9 @@ app.post("/getaddress", (req, res) => {
 
 app.post("/getUserSign", (req, res) => {
   // You can access the JSON sent by the client via req.body
+  console.log("Here is the message need user to sign :");
   console.log(req.body);
-
+  console.log("---------------------------------------");
   // Respond with a JSON object
   res.json({
     signature: "abcdefg",
@@ -33,8 +35,9 @@ app.post("/getUserSign", (req, res) => {
 
 app.post("/serverVerify", (req, res) => {
   // You can access the JSON sent by the client via req.body
+  console.log("Here is the full information that used to verify: ");
   console.log(req.body);
-
+  console.log("---------------------------------------");
   // Respond with a JSON object
   res.json({
     status: "success",

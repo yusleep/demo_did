@@ -6,10 +6,9 @@ button.addEventListener("click", function () {
   fetch("http://localhost:8080")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       // Storing the returned value from the server
       const userDid = data.did;
-      console.log(userDid);
+      console.log(`Here is the user did :${userDid}`);
 
       // 向服务器发送did请求address
       fetch("http://localhost:8080/getaddress", {
@@ -33,7 +32,7 @@ button.addEventListener("click", function () {
         });
 
       const buttonSideDiv = document.getElementById("button-side");
-
+      const randomNum = Math.floor(Math.random() * 100);
       // 设置新的HTML内容
       const newContent = `
       
@@ -43,7 +42,7 @@ button.addEventListener("click", function () {
       </div>
       <div class="message-box">
         <p><strong>Message:</strong></p>
-        <p>Sign in with IX-Chain</p>
+        <p>${randomNum}</p>
         <p><strong>URI:</strong></p>
         <p>https://dailynews.com</p>
         <p><strong>Version:</strong></p>
@@ -72,7 +71,7 @@ button.addEventListener("click", function () {
             },
             body: JSON.stringify({
               // any data you want to send to the server
-              message: "Sign in with IX-Chain",
+              message: `${randomNum}`,
             }),
           })
             .then((response) => response.json()) // assuming server responds with json
@@ -96,7 +95,7 @@ button.addEventListener("click", function () {
             },
             body: JSON.stringify({
               // any data you want to send to the server
-              message: "Sign in with IX-Chain",
+              message: `${randomNum}`,
               address: `${localStorage.getItem("userAddress")}`,
               signature: `${localStorage.getItem("userSignature")}`,
             }),
