@@ -11,7 +11,7 @@ button.addEventListener("click", function () {
       console.log(`Here is the user did :${userDid}`);
 
       // 向服务器发送did请求address
-      fetch("http://localhost:8080/getaddress", {
+      fetch("http://127.0.0.1:8001/dper/send/8002", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ button.addEventListener("click", function () {
         .getElementById("signMessageButton")
         .addEventListener("click", function () {
           // 向用户请求签名
-          fetch("http://localhost:8080/getUserSign", {
+          fetch("http://localhost:8001/dper/signaturereturn", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -88,7 +88,7 @@ button.addEventListener("click", function () {
             });
 
           // 向服务器发送验证请求
-          fetch("http://localhost:8080/serverVerify", {
+          fetch("http://localhost:8001/dper/signvalid", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const buttonVerify = document.getElementById("verifyMessageButton");
 buttonVerify.addEventListener("click", function () {
   const randomNum = Math.floor(Math.random() * 100); //随机生成0-100的整数（不包含100）
   // 向服务器请求签名
-  fetch("http://localhost:8080/getUserSign", {
+  fetch("http://localhost:8002/dper/signaturereturn2", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -193,7 +193,7 @@ buttonVerify.addEventListener("click", function () {
     .getElementById("signMessageButton")
     .addEventListener("click", function () {
       // 向用户发送验证请求
-      fetch("http://localhost:8080/serverVerify", {
+      fetch("http://localhost:8001/dper/signvalid", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
