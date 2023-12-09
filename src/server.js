@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors()); // This enables all CORS requests
 
 app.get("/", (req, res) => {
-  res.json({ did: "exam::010101010101010101" });
+  res.json({ did: "11111111" });
 });
 
 app.post("/getaddress", (req, res) => {

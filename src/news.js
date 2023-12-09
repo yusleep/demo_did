@@ -3,7 +3,7 @@ const button = document.getElementById("sendMessageButton");
 
 button.addEventListener("click", function () {
   // Using the Fetch API to send a GET request to a server
-  fetch("http://127.0.0.1:8001/dper/softInvoke")
+  fetch("http://localhost:8080")
     .then((response) => response.json())
     .then((data) => {
       // Storing the returned value from the server
@@ -13,7 +13,7 @@ button.addEventListener("click", function () {
       const formData = new FormData();
       formData.append("did", `${userDid}`);
       // 向服务器发送did请求address
-      fetch("http://localhost:8080/getaddress", {
+      fetch("http://127.0.0.1:8001/dper/getaddress/8002", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ button.addEventListener("click", function () {
           // 向用户请求签名
           const formData = new FormData();
           formData.append("message", `${randomNum}`);
-          fetch("http://localhost:8080/getUserSign", {
+          fetch("http://localhost:8001/dper/signaturereturn", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -96,7 +96,7 @@ button.addEventListener("click", function () {
             `${localStorage.getItem("userSignature")}`
           );
           // 向服务器发送验证请求
-          fetch("http://localhost:8080/serverVerify", {
+          fetch("http://localhost:8001/dper/signvalid", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -105,6 +105,7 @@ button.addEventListener("click", function () {
           })
             .then((response) => response.json()) // assuming server responds with json
             .then((data) => {
+              console.log(`Verify success : ${data}`);
               // Store the response. Here's an example using local storage
               if ((data.status = "success")) {
                 // 如果验证正确则页面跳转
@@ -145,7 +146,7 @@ buttonVerify.addEventListener("click", function () {
   // 向服务器请求签名
   const formData = new FormData();
   formData.append("message", `${randomNum}`);
-  fetch("http://localhost:8080/getUserSign", {
+  fetch("http://localhost:8002/dper/signaturereturn2", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -204,8 +205,9 @@ buttonVerify.addEventListener("click", function () {
         "signature",
         `${localStorage.getItem("serverSignature")}`
       );
+      console.log(formData);
       // 向用户发送验证请求
-      fetch("http://localhost:8080/serverVerify", {
+      fetch("http://localhost:8001/dper/signvalid", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
