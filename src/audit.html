@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audit</title>
+    <style>
+      body {
+        background-color: rgb(244, 244, 244);
+      }
+
+      .header {
+        text-align: center;
+        padding: 1px 0;
+      }
+
+      .header img {
+      }
+
+      .header h1 {
+        font-size: 4em;
+        color: #000;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        width: 360px;
+        height: 280px;
+        top: 30%;
+        left: 15%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
+        border-radius: 10px;
+        padding: 24px 24px;
+        gap: 1.25rem !important;
+      }
+      .more-info {
+        margin-left: 20px;
+        margin-top: -10px;
+      }
+
+      .audit {
+        background-color: #fff;
+        position: absolute;
+        width: 640px;
+        height: 420px;
+        top: 24%;
+        left: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
+        border-radius: 10px;
+        padding: 24px 24px;
+        padding-left: 48px;
+        overflow: auto;
+      }
+
+      .did-info {
+        margin-left: 20px;
+      }
+
+      .diddoc-info {
+        margin-left: 20px;
+      }
+      .text-cap {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #6c757d;
+        font-weight: 400;
+        margin-bottom: 10px;
+        margin-top: 0px;
+      }
+
+      #audit-button {
+        position: absolute; /* or wherever you'd like it to appear */
+        top: 200px;
+        right: 280px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 5;
+      }
+      .header-sign {
+        text-align: center;
+      }
+      .audit-infopart {
+        position: flex;
+      }
+
+      .footer {
+        background: linear-gradient(180deg, #fff, #fff);
+        border-radius: 20px 20px 0 0;
+        bottom: 0;
+        height: 35px;
+        left: 0;
+        position: fixed;
+        width: 100%;
+        z-index: 99;
+        text-align: center;
+        display: flex;
+      }
+
+      .footer-photo {
+        margin-left: 30px;
+      }
+
+      .footer-content {
+        font-size: 24px;
+        color: black;
+        margin-top: 2px;
+        margin-left: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <!-- <img src="../source/北邮logo.svg" alt="" height="83" /> -->
+      <h1>Audit</h1>
+    </div>
+    <div class="info">
+      <div class="more-info">
+        <h3>Overview</h3>
+      </div>
+      <div class="did-info">
+        <h4 class="text-cap">DID INFO</h4>
+        <div>DID:EXAM:jfsadfhshdfhh</div>
+      </div>
+      <div class="diddoc-info">
+        <h4 class="text-cap">DIDDOC INFO</h4>
+        <div>{</div>
+        <div><strong>Did:</strong> DID:EXAM:jfsadfhshdfhh</div>
+        <div><strong>Pk:</strong> weryywesdfasuwueursaafh</div>
+        <div>}</div>
+      </div>
+    </div>
+    <div class="audit" id="audit-side">
+      <div>
+        <button id="audit-button">Audit</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-photo">
+        <img src="../source/北邮logo.svg" alt="" height="33" />
+        <img src="../source/北邮校名江体.svg" alt="" height="33" />
+      </div>
+      <div class="footer-content">Made by BUPT</div>
+      <div class="footer-content">Location:综合服务楼410</div>
+    </div>
+
+    <script>
+      document
+        .getElementById("audit-button")
+        .addEventListener("click", function () {
+          // 显示audit数据
+          this.remove();
+          const buttonSideDiv = document.getElementById("audit-side");
+          const randomNum = Math.floor(Math.random() * 100);
+          // 设置新的HTML内容
+          const newContent = `
+    
+    <div class="header-sign">
+      <h3>Vc Info</h3>
+    </div>
+    <div class="audit-infopart">
+    <div class="message-box">
+      <p><strong>Identifier:</strong>abca3184-a9ff-496e-b2d4-785eef6eb5bd</p>
+      <p><strong>Issuer:</strong> DID:22222222 </p>
+      <p><strong>Subject:</strong> DID:11111111</p>
+      <p><strong>Validity:</strong> 2023-12-29</p>
+      <p><strong>Purpose:</strong> ganggang</p>
+      <p><strong>Signature:</strong>05b0c537eb57fb4602841833db2f706a2ab758596d5ac468d52cb4aa45048ea60dcf18d0c0ecc6c12e13a8f1af2cdea5ffc685704f6dd558b520c55ec6b8ef1600 </p>
+      <p><strong>Reassign:</strong>1 </p>
+      <p><strong>IssuerAddress:</strong> 74dade920bf7caf74e89fa781832eb9bd948e7f6 </p>
+      <p><strong>SubjectAddress:</strong> 6df8ee4afb8cdc01f9a1173d1895409f03ae1ec6</p> 
+    </div>
+    <div class="message-box">
+      <h3>Transfer:</h3>  
+      <p><strong>Recipient:</strong>DID:33333333 </p>
+      <p><strong>RecipientPurpose:</strong> poppingpopping</p>
+      <p><strong>RecipientAddress:</strong> 72bcc926adccfa87c46a4367dc3e6ec3bd520fb2</p>
+      <p><strong>DonorSignature:</strong> 62a595f49a61b261a706288b8bf5a2ff28a52694d5594afdaadd1e2b082660cd0434bffc1e44b46cdb2562d509b7964102ac5ca7480d8194740311cb9937d29a01 </p>
+      <p><strong>Timestamp:</strong> 2024-12-12</p>
+    </div>
+    <div>
+ 
+  `;
+
+          // 更新button-side div的内容
+          buttonSideDiv.innerHTML = newContent;
+        });
+    </script>
+  </body>
+</html>

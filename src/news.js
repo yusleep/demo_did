@@ -10,20 +10,20 @@ button.addEventListener("click", function () {
       const userDid = data.did;
       console.log(`Here is the user did :${userDid}`);
 
-      const formData = new FormData();
-      formData.append("did", `${userDid}`);
+      const formData_did = new FormData();
+      formData_did.append("DID", `${userDid}`);
+      console.log(formData_did);
       // 向服务器发送did请求address
-      fetch("http://127.0.0.1:8001/dper/getaddress/8002", {
+      fetch("http://127.0.0.1:8001/dper/getaddress", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: formData,
+        headers: {},
+        body: formData_did,
       })
         .then((response) => response.json()) // assuming server responds with json
         .then((data) => {
           // Store the response. Here's an example using local storage
           localStorage.setItem("userAddress", data.address);
+          console.log(`This is the user address : ${data.address}`);
           // Now navigate to another page
         })
         .catch((error) => {
@@ -63,14 +63,12 @@ button.addEventListener("click", function () {
         .getElementById("signMessageButton")
         .addEventListener("click", function () {
           // 向用户请求签名
-          const formData = new FormData();
-          formData.append("message", `${randomNum}`);
+          const formData_userMessage = new FormData();
+          formData_userMessage.append("message", `${randomNum}`);
           fetch("http://localhost:8001/dper/signaturereturn", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: formData,
+            headers: {},
+            body: formData_userMessage,
           })
             .then((response) => response.json()) // assuming server responds with json
             .then((data) => {
@@ -98,9 +96,7 @@ button.addEventListener("click", function () {
           // 向服务器发送验证请求
           fetch("http://localhost:8001/dper/signvalid", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: {},
             body: formDataToServer,
           })
             .then((response) => response.json()) // assuming server responds with json
@@ -144,14 +140,12 @@ const buttonVerify = document.getElementById("verifyMessageButton");
 buttonVerify.addEventListener("click", function () {
   const randomNum = Math.floor(Math.random() * 100); //随机生成0-100的整数（不包含100）
   // 向服务器请求签名
-  const formData = new FormData();
-  formData.append("message", `${randomNum}`);
+  const formData_serverMessage = new FormData();
+  formData_serverMessage.append("message", `${randomNum}`);
   fetch("http://localhost:8002/dper/signaturereturn2", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: formData,
+    headers: {},
+    body: formData_serverMessage,
   })
     .then((response) => response.json()) // assuming server responds with json
     .then((data) => {
@@ -176,7 +170,7 @@ buttonVerify.addEventListener("click", function () {
         <p><strong>Message:</strong></p>
         <p>${randomNum}</p>
         <p><strong>address:</strong></p>
-        <p>${localStorage.getItem("serverSignature")}</p>
+        <p>35ec55397d0fc52b1bb6294a74fc04c34ac85379</p>
         <p><strong>Signature:</strong></p>
         <p>${localStorage.getItem("serverSignature")}</p>
       </div>
@@ -205,13 +199,11 @@ buttonVerify.addEventListener("click", function () {
         "signature",
         `${localStorage.getItem("serverSignature")}`
       );
-      console.log(formData);
+      console.log(formDataToUser);
       // 向用户发送验证请求
       fetch("http://localhost:8001/dper/signvalid", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: {},
         body: formDataToUser,
       })
         .then((response) => response.json()) // assuming server responds with json

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const app = express();
 app.use(bodyParser.json());
@@ -8,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors()); // This enables all CORS requests
 
 app.get("/", (req, res) => {
-  res.json({ did: "11111111" });
+  res.json({ did: "DID:11111111" });
 });
 
 app.post("/getaddress", (req, res) => {

@@ -78,13 +78,90 @@
       }
 
       #unlock-button {
-        position: absolute;
-        top: 300px; /* or wherever you'd like it to appear */
-        right: 120px;
+        position: absolute; /* or wherever you'd like it to appear */
+        top: 300px;
+        right: 130px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
         z-index: 5;
+      }
+
+      #button-side {
+        position: absolute;
+        top: 150px; /* or wherever you'd like it to appear */
+        right: 60px;
+        z-index: 4;
+      }
+
+      .header-sign h1 {
+        font-size: 2.5em;
+        color: black;
+        margin: 1px;
+        margin-left: 15px;
+      }
+      .header-sign p {
+        font-size: 1.2em;
+        color: black;
+        margin: 10px;
+        margin-left: 15px;
+      }
+
+      .sign-button {
+        background-color: #007bff; /* Button background color */
+        border: none; /* 无边框 */
+        border-radius: 20px; /* 圆角边框 */
+        color: white; /* 白色文字 */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 字体大小 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        outline: none; /* 点击时不显示轮廓 */
+        box-shadow: none; /* 不显示阴影 */
+        transition: background-color 0.3s, color 0.3s; /* 过渡动画效果 */
+      }
+
+      .sign-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+      }
+      .cancel-button {
+        background-color: #ffffff; /* 按钮背景颜色为白色 */
+        border: 1px solid #007bff; /* 边框颜色为浅灰色 */
+        border-radius: 20px; /* 圆角边框 */
+        color: #007bff; /* 文字颜色为深灰色 */
+        padding: 10px 20px; /* 按钮内边距 */
+        font-size: 16px; /* 字体大小 */
+        cursor: pointer; /* 鼠标悬停时显示指针 */
+        outline: none; /* 点击时不显示轮廓 */
+        box-shadow: none; /* 不显示阴影 */
+        transition: background-color 0.3s, color 0.3s; /* 过渡动画效果 */
+      }
+
+      .cancel-button:hover {
+        background-color: hsl(0, 0%, 97%); /* 鼠标悬停时的背景颜色 */
+        color: #007bff; /* 鼠标悬停时的文字颜色 */
+      }
+
+      .message-box {
+        width: 200px;
+        height: 200px;
+        background-color: #ffffff; /* Change the color to white */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+        padding: 20px; /* Adjust padding as needed */
+        text-align: left; /* Center align the text */
+        display: block;
+        overflow: auto;
+      }
+      .message-box p {
+        margin: 10px 0; /* Adjust spacing between paragraphs */
+      }
+
+      .button-container {
+        display: flex; /* 使用Flexbox来排列按钮 */
+        justify-content: center; /* 水平居中 */
+        gap: 40px; /* 按钮之间的间隔 */
+        margin-top: 20px; /* 与消息框的距离 */
+        margin-right: 20px;
       }
 
       .articlecard-box {
@@ -201,7 +278,7 @@
       }
 
       .footer {
-        background: linear-gradient(180deg, #e2ebff, #fff);
+        background: linear-gradient(180deg, #fff, #fff);
         border-radius: 20px 20px 0 0;
         bottom: 0;
         height: 35px;
@@ -218,6 +295,10 @@
         color: black;
         margin-top: 2px;
         margin-left: 400px;
+      }
+
+      .footer-photo {
+        margin-left: 30px;
       }
     </style>
   </head>
@@ -304,6 +385,7 @@
         <h1>个性推荐</h1>
       </div>
       <button id="unlock-button">Unlock Content</button>
+      <div class="button-side" id="button-side"></div>
       <div class="content-right">
         <div id="lock-layer"></div>
         <ul>
@@ -347,19 +429,14 @@
       </div>
     </div>
     <div class="footer">
+      <div class="footer-photo">
+        <img src="../source/北邮logo.svg" alt="" height="33" />
+        <img src="../source/北邮校名江体.svg" alt="" height="33" />
+      </div>
       <div class="footer-content">Made by BUPT</div>
       <div class="footer-content">Location:综合服务楼410</div>
     </div>
 
-    <script>
-      document
-        .getElementById("unlock-button")
-        .addEventListener("click", function () {
-          var content = document.querySelector(".content-right");
-          content.style.filter = "none"; // This removes the blur effect
-          document.getElementById("lock-layer").remove(); // This removes the lock layer
-          this.remove();
-        });
-    </script>
+    <script src="news_main.js"></script>
   </body>
 </html>
