@@ -9,6 +9,7 @@ button.addEventListener("click", function () {
       // Storing the returned value from the server
       const userDid = data.did;
       console.log(`Here is the user did :${userDid}`);
+      localStorage.setItem("userDid", userDid);
 
       const formData_did = new FormData();
       formData_did.append("DID", `${userDid}`);
@@ -142,7 +143,7 @@ buttonVerify.addEventListener("click", function () {
   // 向服务器请求签名
   const formData_serverMessage = new FormData();
   formData_serverMessage.append("message", `${randomNum}`);
-  fetch("http://localhost:8002/dper/signaturereturn2", {
+  fetch("http://127.0.0.1:8002/dper/signaturereturn2", {
     method: "POST",
     headers: {},
     body: formData_serverMessage,
@@ -152,6 +153,7 @@ buttonVerify.addEventListener("click", function () {
       // Store the response. Here's an example using local storage
       localStorage.setItem("serverSignature", data.signature);
       localStorage.setItem("serverAddress", data.address);
+      console.log(`${localStorage.getItem("serverAddress")}`);
     })
     .catch((error) => {
       console.error("There was an error with the fetch operation:", error);

@@ -152,40 +152,78 @@
     <script>
       document
         .getElementById("audit-button")
-        .addEventListener("click", function () {
+        .addEventListener("click", async function () {
           // 显示audit数据
           this.remove();
           const buttonSideDiv = document.getElementById("audit-side");
           const randomNum = Math.floor(Math.random() * 100);
+
+          const formData_vctrans = new FormData();
+          formData_vctrans.append(
+            "vcid",
+            `${localStorage.getItem("vcIdentifier")}`
+          );
+          formData_vctrans.append("recipient", "DID:33333333");
+
+          await fetch("http://127.0.0.1:8003/dper/transvcrequest/8002", {
+            method: "POST",
+            headers: {},
+            body: formData_vctrans,
+          })
+            .then((response) => response.json()) // assuming server responds with json
+            .then((data) => {
+              // Store the response. Here's an example using local storage
+              // Now navigate to another page
+              localStorage.setItem("donorSignature", data.DonorSignature);
+              localStorage.setItem("recipientAddress", data.RecipientAddress);
+            })
+            .catch((error) => {
+              console.error(
+                "There was an error with the fetch operation:",
+                error
+              );
+            });
           // 设置新的HTML内容
           const newContent = `
-    
-    <div class="header-sign">
-      <h3>Vc Info</h3>
-    </div>
-    <div class="audit-infopart">
-    <div class="message-box">
-      <p><strong>Identifier:</strong>abca3184-a9ff-496e-b2d4-785eef6eb5bd</p>
-      <p><strong>Issuer:</strong> DID:22222222 </p>
-      <p><strong>Subject:</strong> DID:11111111</p>
-      <p><strong>Validity:</strong> 2023-12-29</p>
-      <p><strong>Purpose:</strong> ganggang</p>
-      <p><strong>Signature:</strong>05b0c537eb57fb4602841833db2f706a2ab758596d5ac468d52cb4aa45048ea60dcf18d0c0ecc6c12e13a8f1af2cdea5ffc685704f6dd558b520c55ec6b8ef1600 </p>
-      <p><strong>Reassign:</strong>1 </p>
-      <p><strong>IssuerAddress:</strong> 74dade920bf7caf74e89fa781832eb9bd948e7f6 </p>
-      <p><strong>SubjectAddress:</strong> 6df8ee4afb8cdc01f9a1173d1895409f03ae1ec6</p> 
-    </div>
-    <div class="message-box">
-      <h3>Transfer:</h3>  
-      <p><strong>Recipient:</strong>DID:33333333 </p>
-      <p><strong>RecipientPurpose:</strong> poppingpopping</p>
-      <p><strong>RecipientAddress:</strong> 72bcc926adccfa87c46a4367dc3e6ec3bd520fb2</p>
-      <p><strong>DonorSignature:</strong> 62a595f49a61b261a706288b8bf5a2ff28a52694d5594afdaadd1e2b082660cd0434bffc1e44b46cdb2562d509b7964102ac5ca7480d8194740311cb9937d29a01 </p>
-      <p><strong>Timestamp:</strong> 2024-12-12</p>
-    </div>
-    <div>
- 
-  `;
+
+        <div class="header-sign">
+          <h3>Vc Info</h3>
+        </div>
+        <div class="audit-infopart">
+        <div class="message-box">
+          <p><strong>Identifier:</strong>${localStorage.getItem(
+            "vcIdentifier"
+          )}</p>
+          <p><strong>Issuer:</strong> ${localStorage.getItem("spDid")} </p>
+          <p><strong>Subject:</strong> ${localStorage.getItem("userDid")}</p>
+          <p><strong>Validity:</strong> 2023-12-29</p>
+          <p><strong>Purpose:</strong> ganggang</p>
+          <p><strong>Signature:</strong> ${localStorage.getItem(
+            "vcSignature"
+          )} </p>
+          <p><strong>Reassign:</strong>1 </p>
+          <p><strong>IssuerAddress:</strong> ${localStorage.getItem(
+            "serverAddress"
+          )} </p>
+          <p><strong>SubjectAddress:</strong> SubjectAddress:</strong> ${localStorage.getItem(
+            "userAddress"
+          )}</p>
+        </div>
+        <div class="message-box">
+          <h3>Transfer:</h3>
+          <p><strong>Recipient:</strong>DID:33333333 </p>
+          <p><strong>RecipientPurpose:</strong> poppingpopping</p>
+          <p><strong>RecipientAddress:</strong> ${localStorage.getItem(
+            "recipientAddress"
+          )}</p>
+          <p><strong>DonorSignature:</strong>  ${localStorage.getItem(
+            "donorSignature"
+          )} </p>
+          <p><strong>Timestamp:</strong> 2024-12-12</p>
+        </div>
+        <div>
+
+      `;
 
           // 更新button-side div的内容
           buttonSideDiv.innerHTML = newContent;

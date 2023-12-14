@@ -1,7 +1,27 @@
 document.getElementById("unlock-button").addEventListener("click", function () {
   const buttonSideDiv = document.getElementById("button-side");
   const randomNum = Math.floor(Math.random() * 100);
+
+  const formData_subjectdid = new FormData();
+  formData_subjectdid.append("SubjectDID", "DID:22222222");
   // 设置新的HTML内容
+
+  fetch("http://127.0.0.1:8002/dper/sendvcrequest/8001", {
+    method: "POST",
+    headers: {},
+    body: formData_subjectdid,
+  })
+    .then((response) => response.json()) // assuming server responds with json
+    .then((data) => {
+      // Store the response. Here's an example using local storage
+      localStorage.setItem("vcIdentifier", data.Identifier);
+      localStorage.setItem("spDid", data.SubjectDID);
+
+      // Now navigate to another page
+    })
+    .catch((error) => {
+      console.error("There was an error with the fetch operation:", error);
+    });
   const newContent = `
     
     <div class="header-sign">
@@ -9,15 +29,21 @@ document.getElementById("unlock-button").addEventListener("click", function () {
       <p>This site is requesting your Vc</p>
     </div>
     <div class="message-box">
-      <p><strong>Identifier:</strong>sdfsa-fnncxn-scxv</p>
-      <p><strong>Issuer:</strong> DID:324723hwehfhh</p>
-      <p><strong>Subject:</strong> DID:sdfasf232</p>
+      <p><strong>Identifier:</strong> ${localStorage.getItem(
+        "vcIdentifier"
+      )}</p>
+      <p><strong>Issuer:</strong> ${localStorage.getItem("spDid")}</p>
+      <p><strong>Subject:</strong> ${localStorage.getItem("userDid")}</p>
       <p><strong>Validity:</strong> 2023-12-29</p>
       <p><strong>Purpose:</strong> ganggang</p>
       <p><strong>Signature:</strong> </p>
-      <p><strong>Reassign:</strong> 0</p>
-      <p><strong>IssuerAddress:</strong> 8adfafcxcvooqweor</p>
-      <p><strong>SubjectAddress:</strong> f21hsdfhay</p>
+      <p><strong>Reassign:</strong> 1</p>
+      <p><strong>IssuerAddress:</strong> ${localStorage.getItem(
+        "serverAddress"
+      )}</p>
+      <p><strong>SubjectAddress:</strong> ${localStorage.getItem(
+        "userAddress"
+      )}</p>
 
      
     </div>
@@ -38,54 +64,29 @@ document.getElementById("unlock-button").addEventListener("click", function () {
       content.style.filter = "none"; // This removes the blur effect
       document.getElementById("lock-layer").remove(); // This removes the lock layer
       document.getElementById("button-side").remove();
-      // 向用户请求签名
-      const formData_userMessage = new FormData();
-      formData_userMessage.append("message", `${randomNum}`);
-      fetch("http://localhost:800/dper/signaturereturn", {
-        method: "POST",
-        headers: {},
-        body: formData_userMessage,
-      })
-        .then((response) => response.json()) // assuming server responds with json
-        .then((data) => {
-          // Store the response. Here's an example using local storage
-          localStorage.setItem("userSignature", data.signature);
-          // Now navigate to another page
-        })
-        .catch((error) => {
-          console.error("There was an error with the fetch operation:", error);
-        });
-
-      const formDataToServer = new FormData();
-      formDataToServer.append("message", `${randomNum}`);
-      formDataToServer.append(
-        "address",
+      // 向链上发送vc
+      const formData_vc = new FormData();
+      formData_vc.append("Issuer", `${localStorage.getItem("spDid")}`);
+      formData_vc.append("Subject", `${localStorage.getItem("userDid")}`);
+      formData_vc.append("validity", "2023-12-29");
+      formData_vc.append(
+        "Identifier",
+        `${localStorage.getItem("vcIdentifier")}`
+      );
+      formData_vc.append(
+        "SubjectAddress",
         `${localStorage.getItem("userAddress")}`
       );
-      formDataToServer.append(
-        "signature",
-        `${localStorage.getItem("userSignature")}`
-      );
-      // 向服务器发送验证请求
-      fetch("http://localhost:800/dper/signvalid", {
+      fetch("http://127.0.0.1:8001/dper/sendvc/8002", {
         method: "POST",
         headers: {},
-        body: formDataToServer,
+        body: formData_vc,
       })
         .then((response) => response.json()) // assuming server responds with json
         .then((data) => {
-          console.log(`Verify success : ${data}`);
           // Store the response. Here's an example using local storage
-          if ((data.status = "success")) {
-            // 如果验证正确则页面跳转
-            window.location.href =
-              "file:///Users/fishbook/MyCode/demo_did/src/news_main.html";
-          } else {
-            alert("验证失败！");
-            window.location.href =
-              "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
-          }
           // Now navigate to another page
+          localStorage.setItem("vcSignature", data.Signature);
         })
         .catch((error) => {
           console.error("There was an error with the fetch operation:", error);
