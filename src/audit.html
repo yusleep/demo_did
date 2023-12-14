@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audit</title>
+    <script>
+      window.myHttp = "http://127.0.0.1";
+    </script>
     <style>
       body {
         background-color: rgb(244, 244, 244);
@@ -144,8 +147,8 @@
 
     <div class="footer">
       <div class="footer-photo">
-        <img src="../source/北邮logo.svg" alt="" height="33" />
-        <img src="../source/北邮校名江体.svg" alt="" height="33" />
+        <img src="./source/北邮logo.svg" alt="" height="33" />
+        <img src="./source/北邮校名江体.svg" alt="" height="33" />
       </div>
       <div class="footer-content">Made by BUPT</div>
       <div class="footer-content">Location:综合服务楼410</div>
@@ -169,7 +172,7 @@
           );
           formData_vctrans.append("recipient", "DID:33333333");
 
-          await fetch("http://127.0.0.1:8003/dper/transvcrequest/8002", {
+          await fetch(`${window.myHttp}` + ":8003/dper/transvcrequest/8002", {
             method: "POST",
             headers: {},
             body: formData_vctrans,

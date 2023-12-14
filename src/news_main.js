@@ -1,3 +1,4 @@
+
 document.getElementById("unlock-button").addEventListener("click", function () {
   const buttonSideDiv = document.getElementById("button-side");
   const randomNum = Math.floor(Math.random() * 100);
@@ -6,7 +7,7 @@ document.getElementById("unlock-button").addEventListener("click", function () {
   formData_subjectdid.append("SubjectDID", "DID:22222222");
   // 设置新的HTML内容
 
-  fetch("http://127.0.0.1:8002/dper/sendvcrequest/8001", {
+  fetch(`${window.myHttp}` + ":8002/dper/sendvcrequest/8001", {
     method: "POST",
     headers: {},
     body: formData_subjectdid,
@@ -77,7 +78,7 @@ document.getElementById("unlock-button").addEventListener("click", function () {
         "SubjectAddress",
         `${localStorage.getItem("userAddress")}`
       );
-      fetch("http://127.0.0.1:8001/dper/sendvc/8002", {
+      fetch(`${window.myHttp}` + ":8001/dper/sendvc/8002", {
         method: "POST",
         headers: {},
         body: formData_vc,
@@ -96,8 +97,7 @@ document.getElementById("unlock-button").addEventListener("click", function () {
   document
     .getElementById("cancelSignButton")
     .addEventListener("click", function () {
-      window.location.href =
-        "file:///Users/fishbook/MyCode/demo_did/src/news_main.html";
+      window.location.href = "./news_main.html";
     });
 
   this.remove();

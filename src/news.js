@@ -15,7 +15,7 @@ button.addEventListener("click", function () {
       formData_did.append("DID", `${userDid}`);
       console.log(formData_did);
       // 向服务器发送did请求address
-      fetch("http://127.0.0.1:8001/dper/getaddress", {
+      fetch(`${window.myHttp}` + ":8001/dper/getaddress", {
         method: "POST",
         headers: {},
         body: formData_did,
@@ -66,7 +66,7 @@ button.addEventListener("click", function () {
           // 向用户请求签名
           const formData_userMessage = new FormData();
           formData_userMessage.append("message", `${randomNum}`);
-          fetch("http://localhost:8001/dper/signaturereturn", {
+          fetch(`${window.myHttp}` + ":8001/dper/signaturereturn", {
             method: "POST",
             headers: {},
             body: formData_userMessage,
@@ -95,7 +95,7 @@ button.addEventListener("click", function () {
             `${localStorage.getItem("userSignature")}`
           );
           // 向服务器发送验证请求
-          fetch("http://localhost:8001/dper/signvalid", {
+          fetch(`${window.myHttp}` + ":8001/dper/signvalid", {
             method: "POST",
             headers: {},
             body: formDataToServer,
@@ -106,12 +106,10 @@ button.addEventListener("click", function () {
               // Store the response. Here's an example using local storage
               if ((data.status = "success")) {
                 // 如果验证正确则页面跳转
-                window.location.href =
-                  "file:///Users/fishbook/MyCode/demo_did/src/news_main.html";
+                window.location.href = "./news_main.html";
               } else {
                 alert("验证失败！");
-                window.location.href =
-                  "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
+                window.location.href = "./news_sign.html";
               }
               // Now navigate to another page
             })
@@ -126,8 +124,7 @@ button.addEventListener("click", function () {
       document
         .getElementById("cancelSignButton")
         .addEventListener("click", function () {
-          window.location.href =
-            "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
+          window.location.href = "./news_sign.html";
         });
     })
     .catch((error) => {
@@ -143,7 +140,7 @@ buttonVerify.addEventListener("click", function () {
   // 向服务器请求签名
   const formData_serverMessage = new FormData();
   formData_serverMessage.append("message", `${randomNum}`);
-  fetch("http://127.0.0.1:8002/dper/signaturereturn2", {
+  fetch(`${window.myHttp}` + ":8002/dper/signaturereturn2", {
     method: "POST",
     headers: {},
     body: formData_serverMessage,
@@ -203,7 +200,7 @@ buttonVerify.addEventListener("click", function () {
       );
       console.log(formDataToUser);
       // 向用户发送验证请求
-      fetch("http://localhost:8001/dper/signvalid", {
+      fetch(`${window.myHttp}` + ":8001/dper/signvalid", {
         method: "POST",
         headers: {},
         body: formDataToUser,
@@ -213,12 +210,10 @@ buttonVerify.addEventListener("click", function () {
           // Store the response. Here's an example using local storage
           if ((data.status = "successs")) {
             alert("Successful!");
-            window.location.href =
-              "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
+            window.location.href = "./news_sign.html";
           } else {
             alert("验证失败！");
-            window.location.href =
-              "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
+            window.location.href = "./news_sign.html";
           }
           // Now navigate to another page
         })
@@ -230,7 +225,6 @@ buttonVerify.addEventListener("click", function () {
   document
     .getElementById("cancelSignButton")
     .addEventListener("click", function () {
-      window.location.href =
-        "file:///Users/fishbook/MyCode/demo_did/src/news_sign.html";
+      window.location.href = "./news_sign.html";
     });
 });
