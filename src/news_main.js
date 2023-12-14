@@ -35,7 +35,7 @@ document.getElementById("unlock-button").addEventListener("click", function () {
       <p><strong>Issuer:</strong> ${localStorage.getItem("spDid")}</p>
       <p><strong>Subject:</strong> ${localStorage.getItem("userDid")}</p>
       <p><strong>Validity:</strong> 2023-12-29</p>
-      <p><strong>Purpose:</strong> ganggang</p>
+      <p><strong>Purpose:</strong> get user info</p>
       <p><strong>Signature:</strong> </p>
       <p><strong>Reassign:</strong> 1</p>
       <p><strong>IssuerAddress:</strong> ${localStorage.getItem(

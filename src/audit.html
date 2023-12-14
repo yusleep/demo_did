@@ -28,7 +28,7 @@
         background-color: #fff;
         position: absolute;
         width: 360px;
-        height: 280px;
+        height: 320px;
         top: 30%;
         left: 15%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Simple shadow effect */
@@ -73,11 +73,7 @@
       }
 
       #audit-button {
-        position: absolute; /* or wherever you'd like it to appear */
-        top: 200px;
-        right: 280px;
-        padding: 10px 20px;
-        font-size: 16px;
+        border: none;
         cursor: pointer;
         z-index: 5;
       }
@@ -133,11 +129,17 @@
         <div><strong>Pk:</strong> weryywesdfasuwueursaafh</div>
         <div>}</div>
       </div>
+      <div class="did-info">
+        <h4 class="text-cap">VC ID</h4>
+        <div id="vc-id">
+          <div>
+            <button id="audit-button"></button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="audit" id="audit-side">
-      <div>
-        <button id="audit-button">Audit</button>
-      </div>
+      <h2 id="needremove">获取vc信息中...</h2>
     </div>
 
     <div class="footer">
@@ -150,11 +152,13 @@
     </div>
 
     <script>
+      var vcid = localStorage.getItem("vcIdentifier");
+      document.getElementById("audit-button").innerHTML = vcid;
       document
         .getElementById("audit-button")
         .addEventListener("click", async function () {
           // 显示audit数据
-          this.remove();
+
           const buttonSideDiv = document.getElementById("audit-side");
           const randomNum = Math.floor(Math.random() * 100);
 
@@ -184,6 +188,7 @@
               );
             });
           // 设置新的HTML内容
+          document.getElementById("needremove").remove();
           const newContent = `
 
         <div class="header-sign">
@@ -197,7 +202,7 @@
           <p><strong>Issuer:</strong> ${localStorage.getItem("spDid")} </p>
           <p><strong>Subject:</strong> ${localStorage.getItem("userDid")}</p>
           <p><strong>Validity:</strong> 2023-12-29</p>
-          <p><strong>Purpose:</strong> ganggang</p>
+          <p><strong>Purpose:</strong> get user info</p>
           <p><strong>Signature:</strong> ${localStorage.getItem(
             "vcSignature"
           )} </p>
@@ -212,7 +217,7 @@
         <div class="message-box">
           <h3>Transfer:</h3>
           <p><strong>Recipient:</strong>DID:33333333 </p>
-          <p><strong>RecipientPurpose:</strong> poppingpopping</p>
+          <p><strong>RecipientPurpose:</strong> give subsidiary user info</p>
           <p><strong>RecipientAddress:</strong> ${localStorage.getItem(
             "recipientAddress"
           )}</p>
